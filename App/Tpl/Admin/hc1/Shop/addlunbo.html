@@ -1,0 +1,161 @@
+<include file="Public:header" />
+
+<!--=== Breadcrumbs ===-->
+<div class="row-fluid breadcrumbs margin-bottom-20">
+<div class="container">
+    <h1 class="pull-left">管理中心</h1>
+    <ul class="pull-right breadcrumb">
+        <li></li>
+    </ul>
+</div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container content recent"> 	
+    <div class="row">
+    <!-- Begin Sidebar Menu -->
+		<include file="Public:xiaokeMenu" />
+<!-- End Sidebar Menu -->
+
+        <div class="col-md-9">
+           <div class="margin-bottom-20">
+            <div class="panel pgy-panel-sea margin-bottom-40">
+                <div class="panel-heading pgy-panel-heading">
+                  <h3 class="panel-title" style="color:#fff">
+                    <i class="fa fa-angle-double-right"></i>添加轮播图 &nbsp;
+                   </h3>
+                </div>
+	            <form class="reg-page sky-form" id="form" method="POST" action="__URL__/addadHandle" >
+	            	<input type="hidden" id="type" name="type" value="1" />
+		               <div class="reg-header">
+		                    <p><img id="thumbnail_img" src="" style="width:300px;height:200px"></p>
+		                    <br>
+		                </div>
+						<section>
+		                    <label class="input">
+		                    <a href="javascript:void(0);" id="uploader-screenshot" class="btn-u btn-u-xs app_edit_screenshot_upload_button" style="position: relative; overflow: hidden; direction: ltr;"><i class="fa fa-picture-o"></i>
+		                     	上传图片<input id="thumbnail" type="file" name="thumbnail" style="position: absolute; right: 0px; top: 0px; font-family: Arial; font-size: 118px; margin: 0px; padding: 0px; cursor: pointer; opacity: 0;" /></a>
+		                    </label>
+		                </section>
+		                <section>
+		                    <label class="label">标题</label>
+		                    <label class="input">
+		                        <i class="icon-append fa fa-pencil"></i>
+		                        <input type="text" id="title" name="title" value="" placeholder="请输入标题">
+		                    </label>
+		                </section>
+		                <section>
+		                    <label class="label">详情(输入网址)</label>
+		                    <label class="textarea textarea-resizable">
+		                        <textarea id="content" name="content" rows="4" class="textArea" /></textarea>
+		                    </label>
+		                </section>
+		                <div class="row">
+		                    <div class="col-md-6 col-xs-6 text-left">
+		                        <span id="syncAppStoreIng" style="height:32px; display:none; line-height:32px; color:#ccc;">同步中，请稍后...
+		                    </span></div>
+		                    <div class="col-md-6 col-xs-6 text-right">
+		                        <button class="btn-u" type="submit" id="submitButton" onclick="submitForm()">保存</button>
+		                    </div>
+		                </div>
+		        </form>
+            </div>
+        </div>
+        <!--End Striped Rows-->
+    </div>
+    <div class="pager">
+        </div>
+
+</div><!--/container-->
+<!--=== End Content Part ===-->
+<!-- JS Page Level -->
+<script type="text/javascript">
+  
+$('.navbar-nav').each(function() {
+	$('.navbar-nav li').attr("class","");
+});
+$("#gl").attr("class","active");
+$('.collapse in').each(function() {
+	$('.collapse in li').attr("class","");
+});
+$("#tjlunb").attr("class","current");
+
+$(function(){
+	$("#thumbnail").live('change',function(){ 
+		ajaxThumbnailUpload();
+	});
+	
+	/* window.UEDITOR_CONFIG.initialFrameHeight = 200;
+	UE.getEditor('content'); */
+	
+});
+
+
+function ajaxThumbnailUpload() {
+	var path = 'Public/upload/';
+    $.ajaxFileUpload
+		(
+			{
+				url: '__GROUP__/Shop/uploadThumbnailHandle',
+				secureuri:false,
+				fileElementId:'thumbnail',
+				dataType: 'json',
+				success: function (data, status)
+				{
+					if(typeof(data.error) != 'undefined')
+					{
+						if(data.error != '')
+						{
+							alert(data.error);
+						}else
+						{
+							$("#thumbnail_img").attr("src", path + data.msg);
+							if($("#thumbnailName")){
+								$("#thumbnailName").remove();
+							}
+							$("#form").append('<input type="hidden" id="thumbnailName" name="thumbnailName" value="'+ data.msg +'" />');
+						}
+					}
+				},
+				error: function (data, status, e)
+				{
+					alert(e);
+				}
+			}
+		)
+    return false;
+}
+
+function submitForm(){
+	var loading=0;
+	if(loading){
+		return false;
+	}
+	$('#form').ajaxForm({
+	     beforeSubmit:  checkForm,// pre-submit callback
+	     success:       complete,// post-submit callback
+	     dataType: 'json'
+	});
+	loading=1;
+    function checkForm(){
+    	if(!$.trim ( $('#thumbnailName').val() )){
+    		alert('请上传图片');
+    		return false;
+    	}
+    	
+    }
+    function complete(d){
+        if (d.error == ""){
+        	alert("保存成功");
+        	window.location.href="__URL__/lunbo";
+        }else{
+        	alert(d.error);
+        	loading=0;
+        }
+    }
+    
+}
+</script>
+
+</body></html>

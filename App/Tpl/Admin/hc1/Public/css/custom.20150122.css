@@ -1,0 +1,142 @@
+/* Add here all your css styles (customizations) */
+.appicon {
+    width: 120px;
+    height: 120px;
+    -webkit-border-radius: 24px;
+    -moz-border-radius: 24px;
+    border-radius: 24px;
+    border: 1px solid #ddd;
+}
+.appicon_s {
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+.appicon_ss {
+    width: 20px;
+    height: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+.myapps td {
+    vertical-align:middle !important;
+}
+.app_view_history td {
+    vertical-align:middle !important;
+}
+.app_view_history tr {
+    cursor:pointer;
+}
+.my_history tr {
+    cursor:pointer;
+}
+
+/* app edit */
+#screenshotTableContainer {
+    height:190px;
+}
+.app_edit_no_screenshot {
+    height:190px;
+    text-align:center;
+    line-height:190px;
+}
+.app_edit_screenshot_img {
+    cursor:pointer;
+    max-width:100px;
+    max-height:160px;
+}
+.app_edit_screenshot_img.pad {
+    margin:0 0 0 22px;
+}
+.app_edit_screenshot_container {
+    background-color:#fff;
+    border:1px solid #bbb;
+    padding:10px;
+    display:block;
+}
+.app_edit_screenshot_container table {
+    width:100%;
+}
+.app_edit_screenshot_upload_button {
+    margin-top:10px;
+}
+.app_edit_screenshot_delete_button {
+    margin-top:10px;
+    display:inline-block;
+}
+
+/* pager */
+.pager {
+}
+.pager a, .pager strong {
+    display:inline-block;
+    padding:3px 10px;
+    margin:0 0px;
+    border:1px solid #ccc;
+    background-color:#fff;
+    text-decoration:none;
+}
+.pager a:hover {
+    background-color:#f5f5f5;
+}
+
+
+.doc-nav.affix {
+    top: 20px;
+}
+.doc-nav.affix-bottom {
+    position: relative;
+}
+
+@media (min-width: 1px) and (max-width:992px) {
+    .doc-nav  {
+        position:static;
+    }
+}
+@media (min-width: 992px) {
+    .doc-nav  {
+        width:213px;
+    }
+}
+@media (min-width: 1200px) {
+    .doc-nav {
+        width:260px;
+    }
+}
+
+.doc-nav .docs-progress-bar {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+/* about/partner */
+
+.partner ul {
+   list-style-type: none;
+   padding:0;
+   margin:0;
+}
+
+.partner ul li {
+    float:left;
+    border:1px solid #eee;
+    width:200px;
+    height:80px;
+    line-height:80px;
+    text-align:center;
+    overflow:hidden;
+    font-size:14px;
+    margin:2px;
+}
+
+.partner ul li img {
+    max-width:140px;
+    max-height:45px;
+}

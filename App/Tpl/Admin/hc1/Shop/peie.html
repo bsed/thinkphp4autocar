@@ -1,0 +1,99 @@
+<include file="Public:header" />
+
+<!--=== Breadcrumbs ===-->
+<div class="row-fluid breadcrumbs margin-bottom-20">
+<div class="container">
+    <h1 class="pull-left">管理中心</h1>
+    <ul class="pull-right breadcrumb">
+        <li></li>
+    </ul>
+</div><!--/container-->
+</div><!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+
+<!--=== Content Part ===-->
+<div class="container content recent"> 	
+    <div class="row">
+    <!-- Begin Sidebar Menu -->
+		<include file="Public:xiaokeMenu" />
+<!-- End Sidebar Menu -->
+
+        <div class="col-md-9">
+           <div class="margin-bottom-20">
+            <div class="panel pgy-panel-sea margin-bottom-40">
+                <div class="panel-heading pgy-panel-heading">
+                  <h3 class="panel-title" style="color:#fff">
+                    <i class="fa fa-angle-double-right"></i>日审车配额 &nbsp;
+                   </h3>
+                </div>
+	            <form class="reg-page sky-form" id="form" method="POST" action="__URL__/addpeieHandle" >
+                        <section>
+		                    <label class="label">配额</label>
+		                    <label class="input">
+		                        <i class="icon-append fa fa-pencil"></i>
+		                        <input type="text" id="content" name="content" value="{$msg.num}" placeholder="请输入日配额">
+		                    </label>
+		                </section>
+		                <div class="row">
+		                    <div class="col-md-6 col-xs-6 text-left">
+		                        <span id="syncAppStoreIng" style="height:32px; display:none; line-height:32px; color:#ccc;">同步中，请稍后...
+		                    </span></div>
+		                    <div class="col-md-6 col-xs-6 text-right">
+		                        <button class="btn-u" type="submit" id="submitButton" onclick="submitForm()">保存</button>
+		                    </div>
+		                </div>
+		        </form>
+            </div>
+        </div>
+        <!--End Striped Rows-->
+    </div>
+    <div class="pager">
+        </div>
+
+</div><!--/container-->
+<!--=== End Content Part ===-->
+<!-- JS Page Level -->
+<script type="text/javascript">
+  
+$('.navbar-nav').each(function() {
+	$('.navbar-nav li').attr("class","");
+});
+$("#gl").attr("class","active");
+$('.collapse in').each(function() {
+	$('.collapse in li').attr("class","");
+});
+$("#rscpe").attr("class","current");
+
+
+function submitForm(){
+	var loading=0;
+	if(loading){
+		return false;
+	}
+	$('#form').ajaxForm({
+	     beforeSubmit:  checkForm,// pre-submit callback
+	     success:       complete,// post-submit callback
+	     dataType: 'json'
+	});
+	loading=1;
+    function checkForm(){
+    	if(!$.trim ( $('#content').val() )){
+    		alert('请填写数字');
+    		return false;
+    	}
+    }
+    function complete(d){
+        if (d.error == ""){
+        	alert("保存成功");
+        	window.location.href="__URL__/peie";
+        }else{
+        	alert(d.error);
+        	loading=0;
+        }
+    }
+    
+}
+</script>
+
+
+</body></html>

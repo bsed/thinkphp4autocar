@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)http://www.pgyer.com/app/finish/ac7282c6c2f4c6cc7c7b7312ef976282 -->
+<html lang="en"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>后台管理</title>
+        <meta charset="utf-8">
+    
+    <link rel="shortcut icon" href="__TMPL__Public/img/favicon.ico">
+
+    <!-- CSS Global Compulsory-->
+    <link rel="stylesheet" href="__TMPL__Public/css/bootstrap.min.20150122.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/style.20150122.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="__TMPL__Public/css/font-awesome.min.20150122.css">
+    <link rel="stylesheet" href="http://static.pgyer.com/static/assets/plugins/font-awesome/css/font-awesome.min.20150122.css">
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="__TMPL__Public/css/default.20150122.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/custom.20150122.css">
+
+	<link rel="stylesheet" href="__TMPL__Public/css/page_log_reg_v1.css">
+	<link rel="stylesheet" href="__TMPL__Public/css/custom-sky-forms.css">
+    
+    
+    <link rel="stylesheet" href="__TMPL__Public/css/my.20150122.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/node.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/jquery.datetimepicker.css">
+    <link rel="stylesheet" href="__TMPL__Public/css/simpleCanleder.css">
+    
+    <script src="__TMPL__Public/js/jquery-1.8.2.min.js"></script>
+    <script src="__TMPL__Public/js/ajaxfileupload.js"></script>
+    <script src="__TMPL__Public/js/jquery.form.js"></script>
+    <script src="__TMPL__Public/js/jquery-ui.js"></script>
+    <script src="__TMPL__Public/js/strophe-custom-2.0.0.js"></script>
+    <script src="__TMPL__Public/js/json2.js"></script>
+    <script src="__TMPL__Public/js/easemob.im-1.0.5.js"></script>
+    <script src="__TMPL__Public/js/jquery.datetimepicker.js"></script>
+    <script src="__TMPL__Public/js/simpleCanleder.js"></script>
+    <!-- <script src="__TMPL__Public/js/bootstrap.js"></script> -->
+    
+    <script src="__ROOT__/Data/Ueditor/ueditor.config.js"></script>
+	<script src="__ROOT__/Data/Ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript">
+		var appkey = "xingxiaotianxia#xingxiaotianxia";
+		window.UEDITOR_CONFIG.initialFrameHeight = 400;
+		window.UEDITOR_CONFIG.savePath='upload1';
+		window.UEDITOR_CONFIG.imageUrl = '__GROUP__/Shop/upload';
+		window.UEDITOR_CONFIG.imagePath = 'Public/upload/';
+	</script>
+	
+</head>
+
+<body>
+
+<!--=== Header ===-->    
+<div class="header">
+    <!-- Topbar -->
+    <div class="topbar">
+        <div class="container">
+            <!-- Topbar Navigation -->
+            <if condition="$Think.session.uname  != ''">
+	            <ul class="loginbar pull-right topmenu-t">
+	                <li><i class="fa fa-user"></i>&nbsp{$Think.session.uname}</li>
+					<!-- <li class="topbar-devider"></li> -->
+					<!-- <li><a href="#">账户设置</a></li> -->
+					<li class="topbar-devider"></li>
+					<li><a href="{:U('Admin/Xkuser/logout')}">退出</a></li>
+	            </ul>
+	        <else />
+	        	<ul class="loginbar pull-right topmenu-t">
+                    <li><a href="__GROUP__/Xkuser/login">登录</a></li>
+	               <!--  <li class="topbar-devider"></li>
+	                <li><a href="__GROUP__/Xkuser/register">注册</a></li> -->
+	            </ul>
+ 			</if>
+            <!-- End Topbar Navigation -->
+        </div>
+    </div>
+    <!-- End Topbar -->
+
+</div>
+<!--=== End Header ===-->    
